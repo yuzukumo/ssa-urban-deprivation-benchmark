@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "ssa-urban-deprivation-benchmark"
 version = "0.1.0"
 description = "Open multimodal pipeline for urban deprivation measurement in sub-Saharan Africa."
+license = {file = "LICENSE"}
 requires-python = ">=3.10"
 dependencies = [
   "matplotlib>=3.10",

@@ -3,6 +3,9 @@ ML_ENV := LD_LIBRARY_PATH=$$CONDA_PREFIX/lib:$$LD_LIBRARY_PATH PYTHONPATH=$(PYTH
 VIIRS_RASTER ?= data/raw/viirs/VNL_v21_npp_2020_global_vcmslcfg_c202205302300.average_masked.dat.tif
 GHSL_BUILT_RASTER ?= data/raw/ghsl/GHS_BUILT_S_E2020_GLOBE_R2023A_4326_30ss_V1_0.tif
 
+readme-teaser:
+	python3 image/README/build_readme_teaser.py
+
 catalog:
 	PYTHONPATH=$(PYTHONPATH) python3 -m ssa_urban_deprivation_benchmark catalog --catalog metadata/data_sources.yaml
 

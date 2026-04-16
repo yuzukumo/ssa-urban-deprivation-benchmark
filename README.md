@@ -1,11 +1,83 @@
-# SSA Urban Deprivation Benchmark
+<h1 align="center">SSA Urban Deprivation Benchmark</h1>
 
-This repository is an open research pipeline for measuring and modeling intra-urban deprivation in sub-Saharan Africa. It links an interpretable atlas baseline to a multicity multimodal benchmark built from public spatial data and weak external supervision.
+<p align="center">
+  Open multimodal benchmark for intra-urban deprivation measurement in sub-Saharan Africa.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10%2B-0b3d91" alt="Python 3.10+" />
+  <img src="https://img.shields.io/badge/cities-6-8c2d19" alt="Six cities" />
+  <img src="https://img.shields.io/badge/unit-500m_grid-2f6b3b" alt="500 m grid" />
+  <img src="https://img.shields.io/badge/weak_supervision-RWI-5a3e9b" alt="Relative Wealth Index" />
+  <img src="https://img.shields.io/badge/license-MIT-black" alt="MIT License" />
+</p>
+
+<p align="center">
+  <a href="#at-a-glance">At a Glance</a> ·
+  <a href="#visual-summary">Visual Summary</a> ·
+  <a href="#methods">Methods</a> ·
+  <a href="#current-results">Results</a> ·
+  <a href="#reproducibility">Reproducibility</a> ·
+  <a href="#license">License</a>
+</p>
+
+This repository is an open research pipeline for measuring and modeling intra-urban deprivation in sub-Saharan Africa. It combines an interpretable atlas baseline with a multicity multimodal benchmark built from public spatial data and weak external supervision.
 
 The current repository has two empirical layers:
 
 - a two-city atlas baseline for Nairobi and Dar es Salaam
 - a six-city multimodal benchmark for Nairobi, Dar es Salaam, Kampala, Accra, Port Harcourt, and Addis Ababa
+
+<p align="center">
+  <img src="image/README/readme_teaser.png" width="94%" alt="Project teaser figure" />
+</p>
+
+## At a Glance
+
+| Component | Specification |
+| --- | --- |
+| Study region | Six sub-Saharan African cities |
+| Unit of analysis | 500 m urban grid cells |
+| Benchmark sample | 11,895 labeled cells |
+| Weak supervision | Relative Wealth Index |
+| Model families | atlas baseline, XGBoost, CNN, multimodal fusion, pretrained ResNet fusion, graph fusion |
+| External validation | GHSL built surface and VIIRS night-time lights |
+
+## Highlights
+
+- Public-data pipeline spanning atlas construction, multimodal prediction, and external validation.
+- Interpretable baseline retained alongside transfer-oriented ML benchmarks rather than replaced by them.
+- Configuration-driven workflow with CLI and Makefile entry points for reproducible reruns.
+- Current benchmark scale: `11,895` labeled cells across six cities.
+
+## Visual Summary
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="outputs/figures/paper_core/figure_02_hotspot_map.png" alt="Local Moran hotspot classification" />
+      <br />
+      <sub>Local Moran hotspot structure in the two-city atlas baseline.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="outputs/figures/ml/core6_rwi_benchmark_rmse.png" alt="Core6 benchmark RMSE" />
+      <br />
+      <sub>Six-city benchmark comparison under pooled and holdout evaluation.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="outputs/figures/paper_core/figure_09_admin_priority_class.png" alt="District priority classes" />
+      <br />
+      <sub>District-level priority classes derived from cell-level burden and hotspot concentration.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="outputs/figures/atlas/mvp_hotspot_dimension_contrast_heatmap.png" alt="Hotspot dimension contrast" />
+      <br />
+      <sub>Standardized contrasts between hotspot and non-hotspot deprivation dimensions.</sub>
+    </td>
+  </tr>
+</table>
 
 ## Study Scope
 
@@ -101,6 +173,10 @@ The repository includes a generic raster-validation route and current validation
 - The principal district priorities are Temeke in Dar es Salaam and Embakasi Central in Nairobi.
 - Cross-city ordering is unchanged under the 1 km sensitivity analysis.
 
+<p align="center">
+  <img src="outputs/figures/paper_core/figure_04_absolute_relative_scatter.png" width="82%" alt="Absolute and within-city relative deprivation scores" />
+</p>
+
 ### Six-City Benchmark
 
 - In pooled random evaluation, `resnet_fusion_pretrained` has the best overall performance:
@@ -113,6 +189,17 @@ The repository includes a generic raster-validation route and current validation
 - Under leave-one-city-out evaluation, `graph_fusion` is the dominant model on most holdout protocols and metrics.
 - The interpretable atlas baseline remains competitive: on `holdout_nairobi`, it has the lowest RMSE and MAE.
 
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="outputs/figures/ml/core6_rwi_benchmark_spearman.png" alt="Core6 benchmark Spearman correlation" />
+    </td>
+    <td align="center" width="50%">
+      <img src="outputs/figures/ml/core6_rwi_benchmark_average_precision.png" alt="Core6 benchmark average precision" />
+    </td>
+  </tr>
+</table>
+
 ### External Validation
 
 - `building_coverage_ratio` aligns strongly with GHSL built surface across cities; the highest city-level alignment is in Dar es Salaam with Spearman `0.9054`.
@@ -121,6 +208,17 @@ The repository includes a generic raster-validation route and current validation
 - VIIRS night-time lights show the expected negative association with deprivation.
 - The highest VIIRS alignment is for `rwi_deprivation_proxy_0_100` in Dar es Salaam with signed Spearman `0.7665`; the highest atlas-index alignment is in Addis Ababa with signed Spearman `0.6829`.
 - The weakest VIIRS alignment is for `deprivation_index_0_100` in Nairobi.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="outputs/figures/paper_core/figure_05_hotspot_dimension_contrast.png" alt="Hotspot dimension contrast" />
+    </td>
+    <td align="center" width="50%">
+      <img src="outputs/figures/paper_core/figure_10_admin_priority_population_share.png" alt="Population share by district priority class" />
+    </td>
+  </tr>
+</table>
 
 ## Key Outputs
 
@@ -197,3 +295,9 @@ conda run -n pytorch make validate-core6-viirs VIIRS_RASTER=/path/to/validation_
 - Relative Wealth Index is used as weak supervision rather than as direct neighborhood ground truth.
 - The current benchmark emphasizes predictive transfer and convergent validation, not causal identification.
 - Source incompleteness is not yet propagated into a formal uncertainty model.
+
+## License
+
+The code in this repository is released under the MIT License. See [LICENSE](LICENSE).
+
+Upstream datasets are not relicensed by this repository. Data use remains governed by the original source terms listed in `metadata/data_sources.yaml` and the corresponding provider portals.
