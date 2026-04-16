@@ -1,0 +1,17 @@
+study_id: mvp_nairobi_dar
+primary_scenario: 500m
+sensitivity_scenario: 1km
+top_fraction: 0.1
+paths:
+  city_score_summary: outputs/tables/mvp_city_score_summary.csv
+  population_exposure: outputs/tables/mvp_population_exposure.csv
+  inequality_summary: outputs/tables/mvp_inequality_summary.csv
+  absolute_relative_alignment: outputs/tables/mvp_absolute_vs_relative_alignment.csv
+  relative_shift_summary: outputs/tables/mvp_relative_shift_summary.csv
+  hotspot_dominant_population_share: outputs/tables/mvp_hotspot_dominant_dimension_population_share_by_city.csv
+  hotspot_priority_population_share: outputs/tables/mvp_hotspot_priority_quadrant_population_share_by_city.csv
+  hotspot_typology_population_share: outputs/tables/mvp_hotspot_typology_population_share_by_city.csv
+  admin_summary: outputs/tables/mvp_admin2_summary.geojson
+  grid_size_score_summary: outputs/tables/mvp_grid_size_score_summary.csv
+  grid_size_population_exposure: outputs/tables/mvp_grid_size_population_exposure.csv
+  grid_size_inequality_summary: outputs/tables/mvp_grid_size_inequality_summary.csv

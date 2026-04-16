@@ -1,0 +1,52 @@
+figure_set_id: mvp_core_publication_set_v1
+items:
+  - id: figure_01_city_score_map
+    filename: figure_01_city_score_map.png
+    title: City-level deprivation scores
+    role: core_map
+    source: outputs/figures/atlas/mvp_score_map_by_city.png
+  - id: figure_02_hotspot_map
+    filename: figure_02_hotspot_map.png
+    title: Local Moran hotspot classification
+    role: core_map
+    source: outputs/figures/atlas/mvp_hotspots_by_city.png
+  - id: figure_03_hotspot_dominant_dimension
+    filename: figure_03_hotspot_dominant_dimension.png
+    title: Dominant deprivation dimension in hotspot cells
+    role: mechanism
+    source: outputs/figures/atlas/mvp_hotspot_dominant_dimension_by_city.png
+  - id: figure_04_absolute_relative_scatter
+    filename: figure_04_absolute_relative_scatter.png
+    title: Pooled and within-city relative deprivation scores
+    role: robustness
+    source: outputs/figures/atlas/mvp_absolute_vs_relative_scatter.png
+  - id: figure_05_hotspot_dimension_contrast
+    filename: figure_05_hotspot_dimension_contrast.png
+    title: Standardized hotspot dimension contrasts
+    role: mechanism
+    source: outputs/figures/atlas/mvp_hotspot_dimension_contrast_heatmap.png
+  - id: figure_06_priority_quadrants
+    filename: figure_06_priority_quadrants.png
+    title: Hotspot priority quadrants
+    role: prioritization
+    source: outputs/figures/atlas/mvp_hotspot_priority_quadrants_by_city.png
+  - id: figure_07_hotspot_typologies
+    filename: figure_07_hotspot_typologies.png
+    title: Hotspot typologies
+    role: synthesis
+    source: outputs/figures/atlas/mvp_hotspot_typologies_by_city.png
+  - id: figure_08_hotspot_typology_population_share
+    filename: figure_08_hotspot_typology_population_share.png
+    title: Population-weighted hotspot typology shares
+    role: synthesis
+    source: outputs/figures/atlas/mvp_hotspot_typology_population_share_by_city.png
+  - id: figure_09_admin_priority_class
+    filename: figure_09_admin_priority_class.png
+    title: District priority classes in the analyzed urban footprint
+    role: policy
+    source: outputs/figures/atlas/mvp_admin2_priority_class.png
+  - id: figure_10_admin_priority_population_share
+    filename: figure_10_admin_priority_population_share.png
+    title: Population share by district priority class
+    role: policy
+    source: outputs/figures/atlas/mvp_admin2_priority_class_population_share_by_city.png

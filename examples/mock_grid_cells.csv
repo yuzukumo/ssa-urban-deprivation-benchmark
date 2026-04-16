@@ -1,0 +1,13 @@
+cell_id,city,country_iso,lon,lat,population,road_distance_m,school_distance_m,clinic_distance_m,amenity_count_1km,population_per_service,building_coverage_ratio,intersection_density_km2,open_space_share,night_lights_mean
+nai_001,Nairobi,KEN,36.815,-1.275,3200,40,120,180,24,110,0.41,92,0.18,38.0
+nai_002,Nairobi,KEN,36.827,-1.281,4100,85,220,260,18,170,0.52,76,0.14,27.0
+nai_003,Nairobi,KEN,36.841,-1.292,5100,150,380,420,11,320,0.61,49,0.08,15.5
+nai_004,Nairobi,KEN,36.853,-1.304,6000,260,520,610,7,520,0.69,28,0.05,8.8
+nai_005,Nairobi,KEN,36.804,-1.309,2800,120,190,240,19,140,0.44,81,0.16,31.2
+nai_006,Nairobi,KEN,36.792,-1.317,4700,300,660,740,6,610,0.72,22,0.04,6.1
+dar_001,Dar es Salaam,TZA,39.247,-6.784,2900,60,170,220,20,130,0.39,88,0.19,29.5
+dar_002,Dar es Salaam,TZA,39.261,-6.799,3600,110,260,310,15,210,0.48,63,0.12,18.6
+dar_003,Dar es Salaam,TZA,39.272,-6.821,4500,180,430,520,9,380,0.58,41,0.07,10.2
+dar_004,Dar es Salaam,TZA,39.285,-6.836,5400,260,610,760,6,570,0.66,25,0.05,5.7
+dar_005,Dar es Salaam,TZA,39.232,-6.842,3300,140,320,390,13,240,0.47,58,0.11,16.3
+dar_006,Dar es Salaam,TZA,39.219,-6.856,4100,340,820,980,4,860,0.74,16,0.03,4.5

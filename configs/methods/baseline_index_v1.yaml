@@ -1,0 +1,65 @@
+index_name: open_urban_deprivation_index_v1
+missing_value_strategy: median_impute
+keep_debug_columns: true
+scale_output_to_0_100: true
+id_columns:
+  - cell_id
+  - city
+  - country_iso
+  - lon
+  - lat
+  - population
+dimension_weights:
+  access: 0.35
+  services: 0.25
+  urban_form: 0.25
+  economic_proxy: 0.15
+features:
+  - name: road_distance_m
+    label: Distance to nearest mapped road
+    dimension: access
+    higher_is_more_deprived: true
+    feature_weight: 1.0
+  - name: school_distance_m
+    label: Distance to nearest mapped school
+    dimension: access
+    higher_is_more_deprived: true
+    feature_weight: 1.0
+  - name: clinic_distance_m
+    label: Distance to nearest mapped clinic
+    dimension: access
+    higher_is_more_deprived: true
+    feature_weight: 1.0
+  - name: amenity_count_1km
+    label: Number of mapped amenities within 1 km
+    dimension: services
+    higher_is_more_deprived: false
+    feature_weight: 0.45
+  - name: population_per_service
+    label: Population burden per nearby service
+    dimension: services
+    higher_is_more_deprived: true
+    feature_weight: 0.55
+  - name: building_coverage_ratio
+    label: Building coverage ratio
+    dimension: urban_form
+    higher_is_more_deprived: true
+    feature_weight: 0.45
+  - name: intersection_density_km2
+    label: Road intersection density per km2
+    dimension: urban_form
+    higher_is_more_deprived: false
+    feature_weight: 0.25
+  - name: open_space_share
+    label: Open space share
+    dimension: urban_form
+    higher_is_more_deprived: false
+    feature_weight: 0.30
+  - name: night_lights_mean
+    label: Mean night lights intensity
+    dimension: economic_proxy
+    higher_is_more_deprived: false
+    feature_weight: 1.0
+pca:
+  enabled: true
+  n_components: 1

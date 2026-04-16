@@ -1,0 +1,80 @@
+study_id: ssa_uda_multicity_core4_v1
+phase: phase_2
+title: Four-city multimodal benchmark for urban deprivation in sub-Saharan Africa
+research_question: >
+  How effectively can public multimodal urban features recover weak external
+  deprivation signals across four SSA cities, and which model classes transfer
+  most robustly under city holdout?
+scope:
+  countries:
+    - KEN
+    - TZA
+    - UGA
+    - GHA
+  cities:
+    - Nairobi
+    - Dar es Salaam
+    - Kampala
+    - Accra
+  primary_city: Nairobi
+  secondary_city: Accra
+  target_year_window: 2020-2023
+  unit_of_analysis: 500m square grid clipped to urban extent
+  grid_cell_size_m: 500
+  protocol_strategy: leave_one_city_out
+recommended_route: multimodal_ml_benchmark
+city_details:
+  - name: Nairobi
+    slug: nairobi
+    place_query: Nairobi, Kenya
+    country_iso: KEN
+    region: east_africa
+    worldcover_tiles:
+      - S03E036
+  - name: Dar es Salaam
+    slug: dar_es_salaam
+    place_query: Dar es Salaam, Tanzania
+    country_iso: TZA
+    region: east_africa
+    worldcover_tiles:
+      - S09E039
+  - name: Kampala
+    slug: kampala
+    place_query: Kampala, Uganda
+    country_iso: UGA
+    region: east_africa
+    worldcover_tiles:
+      - N00E030
+  - name: Accra
+    slug: accra
+    place_query: Accra, Ghana
+    country_iso: GHA
+    region: west_africa
+    worldcover_tiles:
+      - N03W003
+analysis_mask:
+  mode: any
+  conditions:
+    - column: population
+      op: ">="
+      value: 50
+    - column: building_coverage_ratio
+      op: ">="
+      value: 0.05
+core_dimensions:
+  - access
+  - services
+  - urban_form
+  - economic_proxy
+core_sources:
+  boundaries: geoboundaries
+  population: worldpop
+  roads_and_amenities: openstreetmap
+  land_cover: esa_worldcover
+deliverables:
+  - city_feature_table
+  - baseline_index
+  - rwi_weak_targets
+  - multimodal_patch_dataset
+  - multicity_benchmark
+  - holdout_city_summary

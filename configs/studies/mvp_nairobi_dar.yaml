@@ -1,0 +1,63 @@
+study_id: ssa_uda_mvp_v1
+phase: phase_1
+title: Two-city baseline atlas for urban deprivation in Nairobi and Dar es Salaam
+research_question: >
+  How effectively can public geospatial indicators characterize intra-urban
+  deprivation and spatial inequality in Nairobi and Dar es Salaam?
+scope:
+  countries:
+    - KEN
+    - TZA
+  cities:
+    - Nairobi
+    - Dar es Salaam
+  primary_city: Nairobi
+  secondary_city: Dar es Salaam
+  target_year_window: 2020-2023
+  unit_of_analysis: 500m square grid clipped to urban extent
+  grid_cell_size_m: 500
+recommended_route: open_atlas_core
+city_details:
+  - name: Nairobi
+    slug: nairobi
+    place_query: Nairobi, Kenya
+    country_iso: KEN
+    worldcover_tile: S03E036
+  - name: Dar es Salaam
+    slug: dar_es_salaam
+    place_query: Dar es Salaam, Tanzania
+    country_iso: TZA
+    worldcover_tile: S09E039
+analysis_mask:
+  mode: any
+  conditions:
+    - column: population
+      op: ">="
+      value: 50
+    - column: building_coverage_ratio
+      op: ">="
+      value: 0.05
+core_dimensions:
+  - access
+  - services
+  - urban_form
+  - economic_proxy
+core_sources:
+  boundaries: geoboundaries
+  urban_extent: ghsl_smod
+  population: worldpop
+  roads_and_amenities: openstreetmap
+  built_form: grid3_building_metrics
+  land_cover: esa_worldcover
+  night_lights: viirs_vnl
+accelerator_option:
+  built_form: million_neighborhoods
+validation_backlog:
+  - dhs_spatial
+  - ramani_huria
+deliverables:
+  - city_feature_table
+  - baseline_index
+  - pca_robustness_check
+  - hotspot_map
+  - cross_city_comparison_note

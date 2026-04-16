@@ -1,0 +1,66 @@
+index_name: open_urban_deprivation_within_city_v1
+missing_value_strategy: median_impute
+keep_debug_columns: false
+scale_output_to_0_100: true
+winsorize_quantiles: [0.01, 0.99]
+winsorize_group_col: city
+feature_zscore_clip: 4.0
+feature_standardization_group_col: city
+output_scaling:
+  lower_quantile: 0.01
+  upper_quantile: 0.99
+  group_col: city
+id_columns:
+  - cell_id
+  - city
+  - country_iso
+  - lon
+  - lat
+  - population
+dimension_weights:
+  access: 0.4
+  services: 0.3
+  urban_form: 0.3
+features:
+  - name: road_distance_m
+    label: Distance to nearest mapped road
+    dimension: access
+    higher_is_more_deprived: true
+    feature_weight: 1.0
+  - name: school_distance_m
+    label: Distance to nearest mapped school
+    dimension: access
+    higher_is_more_deprived: true
+    feature_weight: 1.0
+  - name: clinic_distance_m
+    label: Distance to nearest mapped clinic or health service
+    dimension: access
+    higher_is_more_deprived: true
+    feature_weight: 1.0
+  - name: amenity_count_1km
+    label: Service-like amenities within 1 km
+    dimension: services
+    higher_is_more_deprived: false
+    feature_weight: 0.45
+  - name: population_per_service
+    label: Population burden per nearby school or clinic
+    dimension: services
+    higher_is_more_deprived: true
+    feature_weight: 0.55
+  - name: building_coverage_ratio
+    label: Built-up land-cover share
+    dimension: urban_form
+    higher_is_more_deprived: true
+    feature_weight: 0.45
+  - name: intersection_density_km2
+    label: Intersection density per km2
+    dimension: urban_form
+    higher_is_more_deprived: false
+    feature_weight: 0.25
+  - name: open_space_share
+    label: Open-space land-cover share
+    dimension: urban_form
+    higher_is_more_deprived: false
+    feature_weight: 0.30
+pca:
+  enabled: false

@@ -1,0 +1,151 @@
+datasets:
+  - id: geoboundaries
+    name: geoBoundaries
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://www.geoboundaries.org/api.html
+    license: CC BY 4.0
+    spatial_resolution: administrative boundaries
+    indicative_size: country files are usually tiny; inference
+    recommended_role: clipping, reporting units, contextual joins
+    local_target: data/raw/boundaries/geoboundaries/
+    sample_download_strategy: KEN and TZA ADM2 or ADM3 via API
+    risks:
+      - administrative boundaries are contextual, not neighborhood truth
+  - id: ghsl_smod
+    name: GHSL / GHS-SMOD
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://ghsl.jrc.ec.europa.eu/download.php
+    license: European Commission reuse policy
+    spatial_resolution: settlement model / built-up products
+    indicative_size: AOI-dependent and potentially hundreds of MB or more; inference
+    recommended_role: urban extent extraction and settlement context
+    local_target: data/raw/ghsl/
+    sample_download_strategy: tiles covering Nairobi and Dar es Salaam only
+    risks:
+      - several product variants and years require careful selection
+  - id: worldpop
+    name: WorldPop
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://hub.worldpop.org/
+    license: CC BY 4.0
+    spatial_resolution: gridded population
+    indicative_size: country files often tens to hundreds of MB; inference
+    recommended_role: population density and service burden
+    local_target: data/raw/worldpop/
+    sample_download_strategy: one recent constrained population layer per country
+    risks:
+      - product variant and year need to be fixed explicitly
+  - id: openstreetmap
+    name: OpenStreetMap / Geofabrik
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://download.geofabrik.de/africa.html
+    license: ODbL
+    spatial_resolution: volunteered vector data
+    indicative_size: city AOIs are manageable, country extracts are larger
+    recommended_role: roads, intersections, mapped amenities, facilities
+    local_target: data/raw/osm/
+    sample_download_strategy: city-level AOI extract or country PBF for KEN and TZA
+    risks:
+      - data completeness varies across cities and feature classes
+  - id: grid3_building_metrics
+    name: GRID3 Africa Building Metrics
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://data.worldpop.org/repo/prj/grid3/africa_building_metrics/v1/
+    license: open release via WorldPop / GRID3
+    spatial_resolution: 3 arc second gridded building metrics
+    indicative_size: likely multi-GB if downloaded broadly; inference
+    recommended_role: building density, count, and built-form stress proxies
+    local_target: data/raw/grid3/
+    sample_download_strategy: subset only metrics needed for the two target AOIs
+    risks:
+      - derived metrics need interpretation before index construction
+  - id: esa_worldcover
+    name: ESA WorldCover
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://esa-worldcover.org/en/data-access
+    license: ESA WorldCover license
+    spatial_resolution: 10m land cover
+    indicative_size: full global product is very large, AOI tiles are manageable
+    recommended_role: open-space and land-cover context
+    local_target: data/raw/worldcover/
+    sample_download_strategy: tiles intersecting Nairobi and Dar es Salaam only
+    risks:
+      - tile selection and resampling choices affect comparability
+  - id: viirs_vnl
+    name: VIIRS VNL
+    route: open_atlas_core
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://eogdata.mines.edu/products/vnl/
+    license: EOG / NOAA terms
+    spatial_resolution: annual night-time lights raster
+    indicative_size: moderate annual raster downloads; inference
+    recommended_role: economic-intensity proxy
+    local_target: data/raw/viirs/
+    sample_download_strategy: one recent annual VNL layer
+    risks:
+      - yearly comparability and bright-core saturation need attention
+  - id: million_neighborhoods
+    name: Million Neighborhoods Africa
+    route: accelerator_route
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://www.millionneighborhoods.africa/download
+    license: see official release
+    spatial_resolution: block-level / country-level published outputs
+    indicative_size: all-SSA parquet is large, country slices are more manageable
+    recommended_role: faster built-form and accessibility baseline
+    local_target: data/raw/million_neighborhoods/
+    sample_download_strategy: country-specific files for KEN and TZA if used
+    risks:
+      - upstream published pipeline reduces end-to-end derivation ownership
+  - id: dhs_spatial
+    name: DHS Spatial Data Repository / GPS Data
+    route: validation_route
+    status: pending_confirmation
+    access: registration_or_approval
+    approval_required: true
+    official_url: https://spatialdata.dhsprogram.com/home/
+    license: DHS terms
+    spatial_resolution: survey clusters and spatial covariates
+    indicative_size: manageable
+    recommended_role: external validation
+    local_target: data/external/dhs/
+    sample_download_strategy: hold until baseline atlas is stable
+    risks:
+      - approval friction, GPS displacement, and aggregation choices matter
+  - id: ramani_huria
+    name: Ramani Huria
+    route: validation_route
+    status: pending_confirmation
+    access: open
+    approval_required: false
+    official_url: https://ramanihuria.org/
+    license: see official release
+    spatial_resolution: city-specific mapped layers
+    indicative_size: moderate city-specific downloads; inference
+    recommended_role: Dar es Salaam case-study extension
+    local_target: data/external/ramani_huria/
+    sample_download_strategy: only if Dar deep dive is approved
+    risks:
+      - schema is specific to the city and less portable across the atlas
