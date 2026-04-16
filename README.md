@@ -14,7 +14,6 @@
 
 <p align="center">
   <a href="#at-a-glance">At a Glance</a> ·
-  <a href="#visual-summary">Visual Summary</a> ·
   <a href="#methods">Methods</a> ·
   <a href="#current-results">Results</a> ·
   <a href="#reproducibility">Reproducibility</a> ·
@@ -30,6 +29,10 @@ The current repository has two empirical layers:
 
 <p align="center">
   <img src="image/README/readme_teaser.png" width="94%" alt="Project teaser figure" />
+</p>
+
+<p align="center">
+  <sub>Atlas baseline, six-city benchmark, district prioritization, and hotspot mechanism outputs.</sub>
 </p>
 
 ## At a Glance
@@ -49,35 +52,6 @@ The current repository has two empirical layers:
 - Interpretable baseline retained alongside transfer-oriented ML benchmarks rather than replaced by them.
 - Configuration-driven workflow with CLI and Makefile entry points for reproducible reruns.
 - Current benchmark scale: `11,895` labeled cells across six cities.
-
-## Visual Summary
-
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="outputs/figures/paper_core/figure_02_hotspot_map.png" alt="Local Moran hotspot classification" />
-      <br />
-      <sub>Local Moran hotspot structure in the two-city atlas baseline.</sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="outputs/figures/ml/core6_rwi_benchmark_rmse.png" alt="Core6 benchmark RMSE" />
-      <br />
-      <sub>Six-city benchmark comparison under pooled and holdout evaluation.</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="outputs/figures/paper_core/figure_09_admin_priority_class.png" alt="District priority classes" />
-      <br />
-      <sub>District-level priority classes derived from cell-level burden and hotspot concentration.</sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="outputs/figures/atlas/mvp_hotspot_dimension_contrast_heatmap.png" alt="Hotspot dimension contrast" />
-      <br />
-      <sub>Standardized contrasts between hotspot and non-hotspot deprivation dimensions.</sub>
-    </td>
-  </tr>
-</table>
 
 ## Study Scope
 
@@ -174,7 +148,7 @@ The repository includes a generic raster-validation route and current validation
 - Cross-city ordering is unchanged under the 1 km sensitivity analysis.
 
 <p align="center">
-  <img src="outputs/figures/paper_core/figure_04_absolute_relative_scatter.png" width="82%" alt="Absolute and within-city relative deprivation scores" />
+  <img src="image/README/readme_absolute_relative.png" width="82%" alt="Absolute and within-city relative deprivation scores" />
 </p>
 
 ### Six-City Benchmark
@@ -189,16 +163,9 @@ The repository includes a generic raster-validation route and current validation
 - Under leave-one-city-out evaluation, `graph_fusion` is the dominant model on most holdout protocols and metrics.
 - The interpretable atlas baseline remains competitive: on `holdout_nairobi`, it has the lowest RMSE and MAE.
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="outputs/figures/ml/core6_rwi_benchmark_spearman.png" alt="Core6 benchmark Spearman correlation" />
-    </td>
-    <td align="center" width="50%">
-      <img src="outputs/figures/ml/core6_rwi_benchmark_average_precision.png" alt="Core6 benchmark average precision" />
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="image/README/readme_benchmark_rmse.png" width="74%" alt="Six-city benchmark RMSE" />
+</p>
 
 ### External Validation
 
@@ -208,17 +175,6 @@ The repository includes a generic raster-validation route and current validation
 - VIIRS night-time lights show the expected negative association with deprivation.
 - The highest VIIRS alignment is for `rwi_deprivation_proxy_0_100` in Dar es Salaam with signed Spearman `0.7665`; the highest atlas-index alignment is in Addis Ababa with signed Spearman `0.6829`.
 - The weakest VIIRS alignment is for `deprivation_index_0_100` in Nairobi.
-
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="outputs/figures/paper_core/figure_05_hotspot_dimension_contrast.png" alt="Hotspot dimension contrast" />
-    </td>
-    <td align="center" width="50%">
-      <img src="outputs/figures/paper_core/figure_10_admin_priority_population_share.png" alt="Population share by district priority class" />
-    </td>
-  </tr>
-</table>
 
 ## Key Outputs
 
